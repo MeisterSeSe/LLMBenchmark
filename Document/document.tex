@@ -1,0 +1,256 @@
+\documentclass[12pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+% Title information
+\title{Market Research Benchmark for Large Language Models}
+\author{Sean Niklas Semmler}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	
+	\tableofcontents
+	
+	\section{Introduction}
+	% Brief introduction to the benchmark and its purpose
+	In recent years, the rapid advancement of artificial intelligence, particularly in the domain of natural language processing (NLP), has opened up new possibilities for automating and enhancing various aspects of market research. Large language models (LLMs) have exhibited noteworthy aptitudes in comprehending and producing text that is akin to that of humans, rendering them potentially efficacious instruments for examining market trends, competitive landscapes, and consumer conduct. Nevertheless, the efficacy of these models in particular market research tasks remains a topic of active investigation.
+	The objective of this study is to benchmark the performance of five language models in the context of market research applications. The performance of these models, namely $phi-2$, $bloomz-1b7$, $stablelm-2-1_6b$, $tinyllama-1.1b-chat$, and $opt-1.3b$, is evaluated across a range of tasks designed to mirror real-world market research scenarios. The benchmark includes questions on trend analysis, competitive landscape assessment, pricing strategies, and market size estimation, thereby enabling an assessment of the models' capabilities in various aspects of market intelligence gathering and analysis.
+	\section{Benchmark Questions}
+	Our benchmark focused on five key questions relevant to market research:
+	\begin{enumerate}
+		\item \textbf{Trend Analysis in AI Funding:} "List the top 5 AI companies globally with the highest funding in 2023."
+		\item \textbf{Competitive Landscape in Cloud Services:} "Identify the top 3 cloud service providers by market share in 2023 and provide their market share percentages."
+		\item \textbf{Trend Analysis in Data Science:} "List the top 5 trending libraries in the Data Science market as of Q4 2023, along with their primary use cases and growth rates over the past year."
+		\item \textbf{Competitive Pricing Analysis:} "What is the pricing range for JetBrains PyCharm? Which pricing package would you recommend a student?"
+		\item \textbf{Market Size Estimation:} "Using the historical growth rate of the global AI market from 2020 to 2023, estimate the market size for 2025. Provide your reasoning and state any assumptions."
+	\end{enumerate}
+	The objective of these questions was to evaluate the models' capabilities in various aspects of market research, including trend identification, competitive analysis, pricing strategies, and market forecasting. The sequence of questions was designed to progress from relatively straightforward listing questions with increasing complexity in the required answer length (Question 1-3), to two questions that required the models to demonstrate their ability to reason and draw conclusions (Question 4-5). 
+	
+	\section{Benchmark Setup}
+	\subsection{Language Models}
+	% List and briefly describe the language models being evaluated
+	For this benchmark, we selected five language models of varying sizes:
+	\begin{itemize}
+		\item \textbf{phi-2} \footnote{\url{https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models}}: A 2.7B parameter model developed by Microsoft, released in December 2023. It represents a recent advancement in smaller-scale language models with impressive capabilities.
+	
+	\item \textbf{bloomz-1b7} \footnote{\url{https://huggingface.co/bigscience/bloomz-1b7}}: Part of the BLOOM family, this 1.7B parameter model was published in November 2022. It's trained on a diverse multilingual dataset, aiming for broad applicability across languages and tasks.
+	
+	\item \textbf{stablelm-2-1\_6b} \footnote{\url{https://huggingface.co/stabilityai/stablelm-2-1_6b}}: Stability AI's latest small-scale model with 1.6B parameters, released in January 2024. It's trained on a diverse dataset for general-purpose use, balancing performance and efficiency.
+	
+	\item \textbf{tinyllama-1.1b-chat} \footnote{\url{https://github.com/jzhang38/TinyLlama}}: A compact 1.1B parameter model optimized for chat-like interactions, released in January 2024. It's designed to emulate larger language models while maintaining efficiency.
+	
+	\item \textbf{opt-1.3b} \footnote{https://huggingface.co/facebook/opt-1.3b} \cite{zhang2022optopenpretrainedtransformer}: Part of Facebook's OPT (Open Pre-trained Transformer) series, this 1.3B parameter model was released in May 2022. It represents an early effort in open-source language models.
+	\end{itemize}
+	
+	The models were selected for comparison of the capabilities of various artificial intelligence (AI) companies and open-source models. Unfortunately, access to a Google model was not readily available. To assess potential progress over time, a range of publication dates was employed. Additionally, models with comparable sizes (between 1 and 3 billion parameters due to hardware constraints) were chosen to facilitate comparison of performance across different designs and training approaches.
+	
+	\subsection{Evaluation Metrics}
+	% Describe the metrics used for evaluation (e.g., accuracy, completeness, analytical quality, etc.)
+	To comprehensively assess the performance of the language models in our market research tasks, we employed the following evaluation metrics:
+	
+	\textbf{Accuracy (Acc):} Measures the correctness of the information provided by the model. A high accuracy score indicates that the model's responses align closely with verified facts and data.\\
+	\textbf{Relevance (Rel):} Assesses how well the model's response addresses the specific question asked. High relevance scores suggest that the model understands the query and provides pertinent information.\\
+	\textbf{Completeness (Comp):} Evaluates the thoroughness of the model's response. A complete answer covers all aspects of the question without significant omissions.
+	\textbf{Coherence (Coh):} This measure assesses the model's capacity to generate responses that are fluent, natural, and consistent with human language.\\
+	\textbf{Reasoning (Reas):} The evaluation of the model's capacity to draw logical conclusions, make inferences and provide well-structured arguments is of particular importance in the context of questions that require analysis or recommendations.
+	Furthermore, the evaluation of the linguistic complexity of the answer is also a key aspect of the assessment.\\
+	\textbf{Response Time (RT):} Measures the time taken by the model to generate its response. This metric is crucial for understanding the model's efficiency, especially in time-sensitive market research scenarios.\\
+	
+Each metric was scored on a scale of 1 to 5, with 5 being the best performance, except for Response Time, which is measured in seconds. 
+These metrics were chosen to provide a holistic view of each model's performance, balancing the quality of information provided (Accuracy, Relevance, Completeness) with the reliability of the output (Coherence), the depth of analysis (Reasoning), and the efficiency of the model (Response Time). This multi-faceted evaluation approach allows for a nuanced understanding of each model's strengths and weaknesses in the context of market research tasks.
+	
+	\subsection{Testing Environment}
+	% Describe the hardware and software setup used for running the benchmark
+	The benchmark was conducted on an Intel® Core™ i7-9700K processor with 8 cores, 16GB RAM, and a 64-bit architecture. The experiment was conducted using a NVIDIA GeForce RTX 2060 SUPER graphics card with 8 GB of VRAM and the CUDA 12.1 software development kit.  The operating system in use was Windows 10 Home, version 22H2. Python version 3.12 was utilised, and time measurement was performed using the Python time.time() function. All language models were loaded from the Hugging Face Model Hub using the Transformers library. This approach ensured consistent access to the most up-to-date versions of each model at the time of the experiment.
+	
+
+	
+	\section{Results}
+	% This section will be filled after running the benchmark
+	\subsection{Performance Comparison}
+	% Include tables or graphs comparing model performance
+	% Define colors for scoring
+	\definecolor{excellent}{RGB}{0,255,0}
+	\definecolor{good}{RGB}{144,238,144}
+	\definecolor{fair}{RGB}{255,255,0}
+	\definecolor{poor}{RGB}{255,165,0}
+	\definecolor{bad}{RGB}{255,0,0}
+	
+	% Macro for colored cells
+	\newcommand{\scorecolor}[1]{%
+		\ifnum#1=5\cellcolor{excellent}5\else
+		\ifnum#1=4\cellcolor{good}4\else
+		\ifnum#1=3\cellcolor{fair}3\else
+		\ifnum#1=2\cellcolor{poor}2\else
+		\cellcolor{bad}1\fi\fi\fi\fi
+	}
+	
+% New macro for coloring runtime cells
+\newcommand{\runtimecolor}[2]{%
+	\ifdim#1pt<#2pt
+	\cellcolor{excellent!50}#1
+	\else
+	\ifdim#1pt<2#2pt
+	\cellcolor{good!50}#1
+	\else
+	\ifdim#1pt<3#2pt
+	\cellcolor{fair!50}#1
+	\else
+	\ifdim#1pt<4#2pt
+	\cellcolor{poor!50}#1
+	\else
+	\cellcolor{bad!50}#1
+	\fi
+	\fi
+	\fi
+	\fi
+}
+
+% Matrix for Question 1
+\begin{table}[h]
+	\centering
+	\caption{Evaluation Matrix for Question 1: Top 5 AI Companies}
+	\begin{tabular}{lcccccc}
+		\toprule
+		Model & Acc & Rel & Comp & Coh & Reas & RT (s) \\
+		\midrule
+		phi-2 & \scorecolor{4} & \scorecolor{5} & \scorecolor{4} & \scorecolor{4} & \scorecolor{3} & \runtimecolor{9.23}{1.49} \\
+		bloomz-1b7 & \scorecolor{3} & \scorecolor{4} & \scorecolor{3} & \scorecolor{4} & \scorecolor{1} & \runtimecolor{1.49}{1.49} \\
+		stablelm-2-1\_6b & \scorecolor{3} & \scorecolor{4} & \scorecolor{4} & \scorecolor{4} & \scorecolor{2} & \runtimecolor{13.16}{1.49} \\
+		tinyllama-1.1b-chat & \scorecolor{2} & \scorecolor{2} & \scorecolor{4} & \scorecolor{2} & \scorecolor{2} & \runtimecolor{24.43}{1.49} \\
+		opt-1.3b & \scorecolor{1} & \scorecolor{1} & \scorecolor{1} & \scorecolor{1} & \scorecolor{1} & \runtimecolor{104.94}{1.49} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+% Matrix for Question 2
+\begin{table}[h]
+	\centering
+	\caption{Evaluation Matrix for Question 2: Top 3 Cloud Service Providers}
+	\begin{tabular}{lcccccc}
+		\toprule
+		Model & Acc & Rel & Comp & Coh & Reas & RT (s) \\
+		\midrule
+		phi-2 & \scorecolor{4} & \scorecolor{5} & \scorecolor{5} & \scorecolor{4} & \scorecolor{5} & \runtimecolor{9.65}{0.96} \\
+		bloomz-1b7 & \scorecolor{3} & \scorecolor{4} & \scorecolor{3} & \scorecolor{4} & \scorecolor{5} & \runtimecolor{0.96}{0.96} \\
+		stablelm-2-1\_6b & \scorecolor{2} & \scorecolor{2} & \scorecolor{2} & \scorecolor{2} & \scorecolor{1} & \runtimecolor{112.65}{0.96} \\
+		tinyllama-1.1b-chat & \scorecolor{4} & \scorecolor{5} & \scorecolor{5} & \scorecolor{5} & \scorecolor{5} & \runtimecolor{25.87}{0.96} \\
+		opt-1.3b & \scorecolor{2} & \scorecolor{3} & \scorecolor{2} & \scorecolor{2} & \scorecolor{2} & \runtimecolor{101.71}{0.96} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+% Matrix for Question 3
+\begin{table}[h]
+	\centering
+	\caption{Evaluation Matrix for Question 3: Top 5 Trending Libraries in Data Science}
+	\begin{tabular}{lcccccc}
+		\toprule
+		Model & Acc & Rel & Comp & Coh & Reas & RT (s) \\
+		\midrule
+		phi-2 & \scorecolor{4} & \scorecolor{5} & \scorecolor{5} & \scorecolor{4} & \scorecolor{5} & \runtimecolor{45.21}{0.41} \\
+		bloomz-1b7 & \scorecolor{1} & \scorecolor{1} & \scorecolor{1} & \scorecolor{1} & \scorecolor{1} & \runtimecolor{0.41}{0.41} \\
+		stablelm-2-1\_6b & \scorecolor{3} & \scorecolor{4} & \scorecolor{5} & \scorecolor{3} & \scorecolor{3} & \runtimecolor{89.47}{0.41} \\
+		tinyllama-1.1b-chat & \scorecolor{4} & \scorecolor{5} & \scorecolor{5} & \scorecolor{4} & \scorecolor{5} & \runtimecolor{62.07}{0.41} \\
+		opt-1.3b & \scorecolor{2} & \scorecolor{2} & \scorecolor{3} & \scorecolor{3} & \scorecolor{2} & \runtimecolor{101.81}{0.41} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+% Matrix for Question 4
+\begin{table}[h]
+	\centering
+	\caption{Evaluation Matrix for Question 4: PyCharm Pricing}
+	\begin{tabular}{lcccccc}
+		\toprule
+		Model & Acc & Rel & Comp & Coh & Reas & RT (s) \\
+		\midrule
+		phi-2 & \scorecolor{3} & \scorecolor{4} & \scorecolor{3} & \scorecolor{3} & \scorecolor{2} & \runtimecolor{91.56}{0.27} \\
+		bloomz-1b7 & \scorecolor{2} & \scorecolor{2} & \scorecolor{2} & \scorecolor{4} & \scorecolor{1} & \runtimecolor{0.27}{0.27} \\
+		stablelm-2-1\_6b & \scorecolor{3} & \scorecolor{3} & \scorecolor{3} & \scorecolor{3} & \scorecolor{2} & \runtimecolor{113.03}{0.27} \\
+		tinyllama-1.1b-chat & \scorecolor{4} & \scorecolor{4} & \scorecolor{4} & \scorecolor{3} & \scorecolor{5} & \runtimecolor{29.64}{0.27} \\
+		opt-1.3b & \scorecolor{4} & \scorecolor{4} & \scorecolor{4} & \scorecolor{2} & \scorecolor{2} & \runtimecolor{100.78}{0.27} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+% Matrix for Question 5
+\begin{table}[h]
+	\centering
+	\caption{Evaluation Matrix for Question 5: Global AI Market Size Estimation}
+	\begin{tabular}{lcccccc}
+		\toprule
+		Model & Acc & Rel & Comp & Coh & Reas & RT (s) \\
+		\midrule
+		phi-2 & \scorecolor{4} & \scorecolor{5} & \scorecolor{5} & \scorecolor{3} & \scorecolor{4} & \runtimecolor{93.50}{0.56} \\
+		bloomz-1b7 & \scorecolor{2} & \scorecolor{2} & \scorecolor{1} & \scorecolor{1} & \scorecolor{1} & \runtimecolor{0.56}{0.56} \\
+		stablelm-2-1\_6b & \scorecolor{3} & \scorecolor{4} & \scorecolor{5} & \scorecolor{4} & \scorecolor{5} & \runtimecolor{30.05}{0.56} \\
+		tinyllama-1.1b-chat & \scorecolor{3} & \scorecolor{4} & \scorecolor{5} & \scorecolor{3} & \scorecolor{4} & \runtimecolor{58.62}{0.56} \\
+		opt-1.3b & \scorecolor{3} & \scorecolor{3} & \scorecolor{4} & \scorecolor{3} & \scorecolor{3} & \runtimecolor{102.25}{0.56} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+	% Overall Performance Matrix
+	\begin{table}[h]
+		\centering
+		\caption{Overall Performance Matrix}
+		\begin{tabular}{lcccccc}
+			\toprule
+			Model & Acc & Rel & Comp & Coh & Reas & RT (s) \\
+			\midrule
+			phi-2 & \scorecolor{4} & \scorecolor{5} & \scorecolor{4} & \scorecolor{4} & \scorecolor{4} & \runtimecolor{49.83}{0.74}  \\
+			bloomz-1b7 & \scorecolor{2} & \scorecolor{3} & \scorecolor{2} & \scorecolor{2} & \scorecolor{1} & \runtimecolor{0.74}{0.74} \\
+			stablelm-2-1\_6b & \scorecolor{3} & \scorecolor{4} & \scorecolor{3} & \scorecolor{3} & \scorecolor{2} & \runtimecolor{71.67}{0.74} \\
+			tinyllama-1.1b-chat & \scorecolor{3} & \scorecolor{4} & \scorecolor{5} & \scorecolor{3} & \scorecolor{4} & \runtimecolor{40.13}{0.74} \\
+			opt-1.3b & \scorecolor{3} & \scorecolor{3} & \scorecolor{3} & \scorecolor{2} & \scorecolor{2} & \runtimecolor{102.30}{0.74} \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	% Legend
+	\begin{flushleft}
+		\small
+		Acc: Accuracy, Rel: Relevance, Comp: Completeness, Coh: Coherence, Reas: Reasoning, RT: Average Runtime
+	\end{flushleft}
+	\subsection{Analysis of Results}
+	Our benchmark evaluated five language models ($phi-2$, $bloomz-1b7$, $stablelm-2-1_6b$, $tinyllama-1.1b-chat$, and $opt-1.3b$) across five market research questions, assessing their performance based on accuracy, relevance, completeness, coherence, reasoning, and response time.
+	The $phi-2$ model emerged as the standout performer, demonstrating consistent excellence across all questions. It particularly excelled in trend analysis and competitive landscape assessments, showcasing high accuracy, relevance, and completeness in its responses. However, this comprehensive performance came at the cost of slower response times, especially for more complex queries.
+	In contrast, $bloomz-1b7$ proved to be the speed champion, consistently delivering the fastest responses across all questions. This makes it an attractive option for time-sensitive applications. However, its performance on other metrics was inconsistent, with notable struggles in addressing the data science libraries question.
+	The $stablelm-2-1_6b$ model showed moderate performance across most metrics. While it performed admirably in the market size estimation question, it faltered when addressing the cloud service providers query. Like phi-2, it exhibited slower response times, particularly for complex questions.
+	$Tinyllama-1.1b-chat$ demonstrated exceptional performance in specific domains, particularly excelling in the cloud service providers and data science libraries questions. It maintained solid performance across other questions with reasonable response times, indicating its potential as a balanced option for certain market research tasks.
+	Lastly, $opt-1.3b$ consistently underperformed, showing the weakest overall results across most questions and metrics, coupled with the slowest response times.
+	Our question set provided valuable insights into the models' capabilities. The AI companies funding question revealed varying levels of up-to-date knowledge among the models. The cloud service providers question highlighted their ability to provide specific market share data. The data science libraries question tested their awareness of current trends and capacity for detailed information. The PyCharm pricing question assessed their capability to provide accurate product information and make recommendations. Finally, the market size estimation question evaluated their analytical and reasoning capabilities.
+	\section{Conclusion}
+	Based on our comprehensive benchmark, we can draw several key conclusions about the performance and potential applications of these language models in market research tasks.
+	$Phi-2$ stands out as the most versatile and reliable model, making it an excellent choice for a wide range of market research tasks where accuracy and completeness take precedence over speed. Its consistent performance across various question types demonstrates its potential as a go-to solution for in-depth market analysis.
+	$Bloomz-1b7$, with its unparalleled speed, presents itself as an ideal candidate for applications requiring rapid responses. This makes it particularly suitable for preliminary research or time-sensitive queries. However, its inconsistent accuracy suggests that its outputs may need verification for critical tasks, positioning it as a valuable tool for initial, fast-paced market explorations.
+	$Tinyllama-1.1b-chat$ shows promise as a lightweight alternative to phi-2. Its strong performance in specific domains, coupled with reasonable response times, makes it a valuable option for targeted market research tasks. This model could be particularly useful in scenarios where a balance between accuracy and speed is crucial.
+	$Stablelm-2-1_6b$ and $opt-1.3b$, while showing potential in certain areas, may require further fine-tuning or updates to compete effectively in market research applications. Their current performance suggests that they might be better suited for specific, niche tasks rather than general market research queries.
+	For future market research applications, we recommend a strategic approach to model selection. $Phi-2$ should be the primary choice for tasks demanding high accuracy and comprehensive responses. $Bloomz-1b7$ is ideal for quick, preliminary research or time-sensitive queries where rapid insights are crucial. $Tinyllama-1.1b-chat$ offers a compelling middle ground, serving as a lightweight alternative to $phi-2$ for scenarios where both accuracy and efficiency are important.
+	In conclusion, this benchmark highlights the diverse strengths of different language models in the context of market research. By carefully selecting the appropriate model based on the specific requirements of each task – be it depth of analysis, speed of response, or domain-specific knowledge – researchers and analysts can significantly enhance the efficiency and effectiveness of their market research processes.
+	% Summarize the key findings and implications of the benchmark
+	
+	\bibliographystyle{plain}
+	\bibliography{references}
+	
+\end{document}
+
+% References (to be added to your bibliography)
+% \bibitem{phi2} Gunasekar et al. (2023). Phi-2: The surprising power of small language models. arXiv preprint arXiv:2312.12016.
+% \bibitem{bloomz} Scao et al. (2022). BLOOM: A 176B-Parameter Open-Access Multilingual Language Model. arXiv preprint arXiv:2211.05100.
+% \bibitem{stablelm} Stability AI. (2024). StableLM: Stability AI Language Models. https://github.com/Stability-AI/StableLM
+% \bibitem{tinyllama} TinyLlama Team. (2024). TinyLlama: An Open-Source Small Language Model. https://github.com/jzhang38/TinyLlama
+% \bibitem{opt} Zhang et al. (2022). OPT: Open Pre-trained Transformer Language Models. arXiv preprint arXiv:2205.01068.
