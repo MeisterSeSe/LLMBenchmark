@@ -1,0 +1,112 @@
+{
+  "phi-2": [
+    {
+      "response_time": 9.225587844848633,
+      "token_efficiency": 1.984375
+    },
+    {
+      "response_time": 9.652782201766968,
+      "token_efficiency": 2.0
+    },
+    {
+      "response_time": 45.21298909187317,
+      "token_efficiency": 3.704861111111111
+    },
+    {
+      "response_time": 91.55786037445068,
+      "token_efficiency": 4.151515151515151
+    },
+    {
+      "response_time": 93.49990272521973,
+      "token_efficiency": 3.787709497206704
+    }
+  ],
+  "bloomz-1b7": [
+    {
+      "response_time": 1.4945151805877686,
+      "token_efficiency": 1.4642857142857142
+    },
+    {
+      "response_time": 0.9573543071746826,
+      "token_efficiency": 0.7096774193548387
+    },
+    {
+      "response_time": 0.4115304946899414,
+      "token_efficiency": 0.3684210526315789
+    },
+    {
+      "response_time": 0.2725095748901367,
+      "token_efficiency": 0.15384615384615385
+    },
+    {
+      "response_time": 0.563162088394165,
+      "token_efficiency": 0.07894736842105263
+    }
+  ],
+  "stablelm-2-1_6b": [
+    {
+      "response_time": 13.162056684494019,
+      "token_efficiency": 2.4074074074074074
+    },
+    {
+      "response_time": 112.65196418762207,
+      "token_efficiency": 3.946969696969697
+    },
+    {
+      "response_time": 89.46514010429382,
+      "token_efficiency": 4.553488372093023
+    },
+    {
+      "response_time": 113.02885222434998,
+      "token_efficiency": 4.480916030534351
+    },
+    {
+      "response_time": 30.050063848495483,
+      "token_efficiency": 2.282608695652174
+    }
+  ],
+  "tinyllama-1.1b-chat": [
+    {
+      "response_time": 24.427727937698364,
+      "token_efficiency": 2.3230769230769233
+    },
+    {
+      "response_time": 25.8742094039917,
+      "token_efficiency": 1.9814814814814814
+    },
+    {
+      "response_time": 62.06697177886963,
+      "token_efficiency": 3.7169373549883993
+    },
+    {
+      "response_time": 29.640485048294067,
+      "token_efficiency": 3.435185185185185
+    },
+    {
+      "response_time": 58.621896743774414,
+      "token_efficiency": 3.0979498861047836
+    }
+  ],
+  "opt-1.3b": [
+    {
+      "response_time": 104.93675065040588,
+      "token_efficiency": 1.160919540229885
+    },
+    {
+      "response_time": 101.71176815032959,
+      "token_efficiency": 3.897727272727273
+    },
+    {
+      "response_time": 101.8100335597992,
+      "token_efficiency": 4.087198515769944
+    },
+    {
+      "response_time": 100.78498411178589,
+      "token_efficiency": 3.8090737240075616
+    },
+    {
+      "response_time": 102.24654650688171,
+      "token_efficiency": 4.408921933085502
+    }
+  ]
+}
