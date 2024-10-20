@@ -53,7 +53,7 @@ For a comprehensive analysis, including detailed evaluation matrices and in-dept
 ## Repository Structure
 
 - `README.md`: This file, providing an overview of the benchmark study.
-- `document/document.pdf`: Comprehensive report with detailed analysis and evaluation matrices.
+- `full_report.pdf`: Comprehensive report with detailed analysis and evaluation matrices.
 - `plots/`: Directory containing all performance plots.
 - `data/`: Raw data and responses from the language models.
 - `scripts/`: Code used for evaluation and plot generation.
