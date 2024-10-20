@@ -75,7 +75,8 @@ These metrics were chosen to provide a holistic view of each model's performance
 	% Describe the hardware and software setup used for running the benchmark
 	The benchmark was conducted on an Intel® Core™ i7-9700K processor with 8 cores, 16GB RAM, and a 64-bit architecture. The experiment was conducted using a NVIDIA GeForce RTX 2060 SUPER graphics card with 8 GB of VRAM and the CUDA 12.1 software development kit.  The operating system in use was Windows 10 Home, version 22H2. Python version 3.12 was utilised, and time measurement was performed using the Python time.time() function. All language models were loaded from the Hugging Face Model Hub using the Transformers library. This approach ensured consistent access to the most up-to-date versions of each model at the time of the experiment.
 
-	
+	\subsection{Threats to Validity}
+		The validity of our benchmark results could be affected by several factors. Firstly, it should be noted that each model was only run twice, which limits the robustness of the evaluation. Secondly, the results were scored manually, which could introduce subjectivity or human error. Furthermore, the ground truth data may not be entirely accurate or up to date. Finally, models may differ in their currency of knowledge, with some relying on outdated information due to previous training or publication dates. Consequently, we were lenient in the data scoring if the responses for data were not significantly divergent. These factors can affect the fairness and consistency of comparisons.
 	\section{Results}
 	% This section will be filled after running the benchmark
 	\subsection{Performance Comparison}
