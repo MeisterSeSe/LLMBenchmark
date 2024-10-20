@@ -21,12 +21,12 @@
 	
 	\maketitle
 	
-	\tableofcontents
+	%\tableofcontents
 	
 	\section{Introduction}
 	% Brief introduction to the benchmark and its purpose
 	In recent years, the rapid advancement of artificial intelligence, particularly in the domain of natural language processing (NLP), has opened up new possibilities for automating and enhancing various aspects of market research. Large language models (LLMs) have exhibited noteworthy aptitudes in comprehending and producing text that is akin to that of humans, rendering them potentially efficacious instruments for examining market trends, competitive landscapes, and consumer conduct. Nevertheless, the efficacy of these models in particular market research tasks remains a topic of active investigation.
-	The objective of this study is to benchmark the performance of five language models in the context of market research applications. The performance of these models, namely $phi-2$, $bloomz-1b7$, $stablelm-2-1_6b$, $tinyllama-1.1b-chat$, and $opt-1.3b$, is evaluated across a range of tasks designed to mirror real-world market research scenarios. The benchmark includes questions on trend analysis, competitive landscape assessment, pricing strategies, and market size estimation, thereby enabling an assessment of the models' capabilities in various aspects of market intelligence gathering and analysis.
+	The objective of this study is to benchmark the performance of five language models in the context of market research applications. The performance of these models, namely $phi-2$, $bloomz-1b7$, $stablelm-2-1\_6b$, $tinyllama-1.1b-chat$, and $opt-1.3b$, is evaluated across a range of tasks designed to mirror real-world market research scenarios. The benchmark includes questions on trend analysis, competitive landscape assessment, pricing strategies, and market size estimation, thereby enabling an assessment of the models' capabilities in various aspects of market intelligence gathering and analysis.
 	\section{Benchmark Questions}
 	Our benchmark focused on five key questions relevant to market research:
 	\begin{enumerate}
@@ -62,7 +62,7 @@
 	
 	\textbf{Accuracy (Acc):} Measures the correctness of the information provided by the model. A high accuracy score indicates that the model's responses align closely with verified facts and data.\\
 	\textbf{Relevance (Rel):} Assesses how well the model's response addresses the specific question asked. High relevance scores suggest that the model understands the query and provides pertinent information.\\
-	\textbf{Completeness (Comp):} Evaluates the thoroughness of the model's response. A complete answer covers all aspects of the question without significant omissions.
+	\textbf{Completeness (Comp):} Evaluates the thoroughness of the model's response. A complete answer covers all aspects of the question without significant omissions.\\
 	\textbf{Coherence (Coh):} This measure assesses the model's capacity to generate responses that are fluent, natural, and consistent with human language.\\
 	\textbf{Reasoning (Reas):} The evaluation of the model's capacity to draw logical conclusions, make inferences and provide well-structured arguments is of particular importance in the context of questions that require analysis or recommendations.
 	Furthermore, the evaluation of the linguistic complexity of the answer is also a key aspect of the assessment.\\
@@ -74,7 +74,6 @@ These metrics were chosen to provide a holistic view of each model's performance
 	\subsection{Testing Environment}
 	% Describe the hardware and software setup used for running the benchmark
 	The benchmark was conducted on an Intel® Core™ i7-9700K processor with 8 cores, 16GB RAM, and a 64-bit architecture. The experiment was conducted using a NVIDIA GeForce RTX 2060 SUPER graphics card with 8 GB of VRAM and the CUDA 12.1 software development kit.  The operating system in use was Windows 10 Home, version 22H2. Python version 3.12 was utilised, and time measurement was performed using the Python time.time() function. All language models were loaded from the Hugging Face Model Hub using the Transformers library. This approach ensured consistent access to the most up-to-date versions of each model at the time of the experiment.
-	
 
 	
 	\section{Results}
@@ -226,10 +225,10 @@ These metrics were chosen to provide a holistic view of each model's performance
 		Acc: Accuracy, Rel: Relevance, Comp: Completeness, Coh: Coherence, Reas: Reasoning, RT: Average Runtime
 	\end{flushleft}
 	\subsection{Analysis of Results}
-	Our benchmark evaluated five language models ($phi-2$, $bloomz-1b7$, $stablelm-2-1_6b$, $tinyllama-1.1b-chat$, and $opt-1.3b$) across five market research questions, assessing their performance based on accuracy, relevance, completeness, coherence, reasoning, and response time.
+	Our benchmark evaluated five language models ($phi-2$, $bloomz-1b7$, $stablelm-2-1\_6b$, $tinyllama-1.1b-chat$, and $opt-1.3b$) across five market research questions, assessing their performance based on accuracy, relevance, completeness, coherence, reasoning, and response time.
 	The $phi-2$ model emerged as the standout performer, demonstrating consistent excellence across all questions. It particularly excelled in trend analysis and competitive landscape assessments, showcasing high accuracy, relevance, and completeness in its responses. However, this comprehensive performance came at the cost of slower response times, especially for more complex queries.
 	In contrast, $bloomz-1b7$ proved to be the speed champion, consistently delivering the fastest responses across all questions. This makes it an attractive option for time-sensitive applications. However, its performance on other metrics was inconsistent, with notable struggles in addressing the data science libraries question.
-	The $stablelm-2-1_6b$ model showed moderate performance across most metrics. While it performed admirably in the market size estimation question, it faltered when addressing the cloud service providers query. Like phi-2, it exhibited slower response times, particularly for complex questions.
+	The $stablelm-2-1\_6b$ model showed moderate performance across most metrics. While it performed admirably in the market size estimation question, it faltered when addressing the cloud service providers query. Like phi-2, it exhibited slower response times, particularly for complex questions.
 	$Tinyllama-1.1b-chat$ demonstrated exceptional performance in specific domains, particularly excelling in the cloud service providers and data science libraries questions. It maintained solid performance across other questions with reasonable response times, indicating its potential as a balanced option for certain market research tasks.
 	Lastly, $opt-1.3b$ consistently underperformed, showing the weakest overall results across most questions and metrics, coupled with the slowest response times.
 	Our question set provided valuable insights into the models' capabilities. The AI companies funding question revealed varying levels of up-to-date knowledge among the models. The cloud service providers question highlighted their ability to provide specific market share data. The data science libraries question tested their awareness of current trends and capacity for detailed information. The PyCharm pricing question assessed their capability to provide accurate product information and make recommendations. Finally, the market size estimation question evaluated their analytical and reasoning capabilities.
@@ -238,7 +237,7 @@ These metrics were chosen to provide a holistic view of each model's performance
 	$Phi-2$ stands out as the most versatile and reliable model, making it an excellent choice for a wide range of market research tasks where accuracy and completeness take precedence over speed. Its consistent performance across various question types demonstrates its potential as a go-to solution for in-depth market analysis.
 	$Bloomz-1b7$, with its unparalleled speed, presents itself as an ideal candidate for applications requiring rapid responses. This makes it particularly suitable for preliminary research or time-sensitive queries. However, its inconsistent accuracy suggests that its outputs may need verification for critical tasks, positioning it as a valuable tool for initial, fast-paced market explorations.
 	$Tinyllama-1.1b-chat$ shows promise as a lightweight alternative to phi-2. Its strong performance in specific domains, coupled with reasonable response times, makes it a valuable option for targeted market research tasks. This model could be particularly useful in scenarios where a balance between accuracy and speed is crucial.
-	$Stablelm-2-1_6b$ and $opt-1.3b$, while showing potential in certain areas, may require further fine-tuning or updates to compete effectively in market research applications. Their current performance suggests that they might be better suited for specific, niche tasks rather than general market research queries.
+	$Stablelm-2-1\_6b$ and $opt-1.3b$, while showing potential in certain areas, may require further fine-tuning or updates to compete effectively in market research applications. Their current performance suggests that they might be better suited for specific, niche tasks rather than general market research queries.
 	For future market research applications, we recommend a strategic approach to model selection. $Phi-2$ should be the primary choice for tasks demanding high accuracy and comprehensive responses. $Bloomz-1b7$ is ideal for quick, preliminary research or time-sensitive queries where rapid insights are crucial. $Tinyllama-1.1b-chat$ offers a compelling middle ground, serving as a lightweight alternative to $phi-2$ for scenarios where both accuracy and efficiency are important.
 	In conclusion, this benchmark highlights the diverse strengths of different language models in the context of market research. By carefully selecting the appropriate model based on the specific requirements of each task – be it depth of analysis, speed of response, or domain-specific knowledge – researchers and analysts can significantly enhance the efficiency and effectiveness of their market research processes.
 	% Summarize the key findings and implications of the benchmark
