@@ -24,12 +24,16 @@ We evaluated five state-of-the-art language models on their ability to perform v
 ## Key Findings
 
 ### Performance Across Metrics
-![Overall Performance](graphs/OverallPerformanceAcrossMetrics.png)
-![Accuracy Scores](graphs/accuracy_across_questions_plot.png)
-![Relevance Scores](graphs/relevance_across_questions_plot.png)
-![Completeness Scores](graphs/completeness_across_questions_plot.png)
-![Coherence Scores](graphs/coherence_across_questions_plot.png)
-![Reasoning Scores](graphs/reasoning_across_questions_plot.png)
+![Overall Performance](LLMBenchmark/graphs/OverallPerformanceAcrossMetrics.png)
+![Accuracy Scores](LLMBenchmark/graphs/accuracy_across_questions_plot.png)
+![Relevance Scores](LLMBenchmark/graphs/relevance_across_questions_plot.png)
+![Completeness Scores](LLMBenchmark/graphs/completeness_across_questions_plot.png)
+![Coherence Scores](LLMBenchmark/graphs/coherence_across_questions_plot.png)
+![Reasoning Scores](LLMBenchmark/graphs/reasoning_across_questions_plot.png)
+
+## Detailed Report
+
+For a comprehensive analysis, including detailed evaluation matrices and in-depth discussion of results, please refer to the full report document `Document/document.pdf` in this repository.
 
 ### Summary of Results
 
@@ -53,10 +57,10 @@ For a comprehensive analysis, including detailed evaluation matrices and in-dept
 ## Repository Structure
 
 - `README.md`: This file, providing an overview of the benchmark study.
-- `full_report.pdf`: Comprehensive report with detailed analysis and evaluation matrices.
-- `plots/`: Directory containing all performance plots.
-- `data/`: Raw data and responses from the language models.
-- `scripts/`: Code used for evaluation and plot generation.
+- `Document/document.pdf`: Comprehensive report with detailed analysis and evaluation matrices.
+- `LLMBenchmark/graphs/`: Directory containing all performance plots.
+- `LLMBenchmark/results/`: Directory containing raw data and responses from the language models.
+- `LLMBenchmark/scripts/`: Code used for evaluation and plot generation.
 
 ## Methodology
 
