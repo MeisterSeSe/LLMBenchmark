@@ -62,6 +62,30 @@ For a comprehensive analysis, including detailed evaluation matrices and in-dept
 - `LLMBenchmark/results/`: Directory containing raw data and responses from the language models.
 - `LLMBenchmark/scripts/`: Code used for evaluation and plot generation.
 
+## Setup and Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/MeisterSeSe/LLMBenchmark.git
+cd LLMBenchmark/LLMBenchmark
+```
+
+2. Create and activate virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+## Running the Evaluation
+```bash
+python scripts/evaluation.py #Run evaluation 
+python scripts/graphs.py #Create graphs
+```
+
 ## Methodology
 
 Our evaluation was based on five criteria: Accuracy, Relevance, Completeness, Coherence, and Reasoning. We also measured response time for each model. The detailed methodology is available in the full report.

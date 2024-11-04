@@ -189,7 +189,7 @@ def save_results(results, model_responses):
         json.dump(results, f, indent=2)
 
     # Save model responses
-    with open(f'../results/model_responses_{timestamp}.json', 'w') as f:
+    with open(f'results/model_responses_{timestamp}.json', 'w') as f:
         json.dump(model_responses, f, indent=2)
 
     print(f"Results and responses saved with timestamp {timestamp}")
@@ -199,4 +199,3 @@ def save_results(results, model_responses):
 if __name__ == "__main__":
     results, model_responses = run_benchmark(models_info, questions)
     save_results(results, model_responses)
-    #print(calculate_average_times("../results/benchmark_results_20241019_190207.json"))
